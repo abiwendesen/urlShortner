@@ -3,7 +3,7 @@ import { encode ,decode} from "../utills/base62.js";
 
 export const urlshort = async(req,res)=>{
     const longUrl = req.body.url;
-    const ip = req.ip
+    const ip = req.ip; //to be removed 
     const [result] = await db.query('INSERT INTO shorturl(long_url,ipAddress) VALUES(?,?)', [longUrl,ip]);
      console.log(result.insertId);
      const base = encode(result.insertId);
