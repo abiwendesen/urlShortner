@@ -9,6 +9,8 @@ const app = express();
 
 dotenv.config()
 
+app.use(morgan('common'))
+
 app.use(bodyParser.json());
 
 const port = 5000;
