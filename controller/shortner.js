@@ -18,7 +18,7 @@ export const urlshort = async(req,res)=>{
 
 
     const [result] = await db.query('INSERT INTO shorturl(long_url,ipAddress) VALUES(?,?)', [longUrl,ip]);
-     console.log(result.insertId);
+     
      const insertedId = result.insertId;
      const code= encode(insertedId);
      const shorturl = process.env.BASE_URL + code;

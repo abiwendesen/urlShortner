@@ -5,11 +5,13 @@ import bodyParser from 'body-parser';
 import { db } from './db/database.js';
 import urlRoutes from './routes/urlRoutes.js';
 import dotenv  from 'dotenv';
+import fs, { access } from 'fs';
+import path from 'path';
 const app = express();
-
+const __dirname = import.meta.dirname
 dotenv.config()
-
-app.use(morgan('common'))
+let accessLogStream = fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'})
+app.use(morgan('combined', {stream: accessLogStream}))
 
 app.use(bodyParser.json());
 
