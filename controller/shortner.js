@@ -3,10 +3,7 @@ import { encode ,decode} from "../utills/base62.js";
 import client from "../db/cache.js";
 import { normalizeUrl } from "../utills/urlTrim.js";
 
-
 const CACHE_TLL = 3600
-
-
 
 export const urlshort = async(req,res)=>{
     const longUrl = normalizeUrl(req.body.url);
