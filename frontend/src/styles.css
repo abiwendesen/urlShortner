@@ -1,0 +1,129 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f7fb;
+  color: #1a2230;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: min(640px, 100%);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 20px 45px rgba(26, 34, 48, 0.12);
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+}
+
+.subtitle {
+  margin: 0 0 18px;
+  color: #596273;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d2d9e3;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: 2px solid #1f7aea;
+  border-color: #1f7aea;
+}
+
+button,
+.open-link {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button {
+  background: #1f7aea;
+  color: #fff;
+}
+
+button:disabled {
+  background: #8fb9ee;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #c62f2f;
+  margin: 14px 0 0;
+}
+
+.result {
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid #dce4ee;
+  border-radius: 10px;
+  background: #f8fbff;
+}
+
+.result-label {
+  margin: 0 0 4px;
+  color: #596273;
+  font-size: 0.9rem;
+}
+
+.result a {
+  word-break: break-all;
+  color: #1f7aea;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.open-link {
+  background: #ecf2fb;
+  color: #1a2230;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 20px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
