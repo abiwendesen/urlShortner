@@ -3,7 +3,7 @@ import { encode ,decode} from "../utills/base62.js";
 import client from "../db/cache.js";
 import { normalizeUrl } from "../utills/urlTrim.js";
 
-const CACHE_TLL = 3600
+const CACHE_TLL = 36000
 
 export const urlshort = async(req,res)=>{
     const longUrl = normalizeUrl(req.body.url);
@@ -26,7 +26,7 @@ export const urlshort = async(req,res)=>{
         });
 
      }catch(err){
-        console.warn("Warining Redis set failed");
+        console.warn("Warining:" + err);
      }
 
     const[insert] = await db.query("UPDATE shorturl SET short_code=? WHERE id=?", [code,insertedId])
@@ -49,7 +49,7 @@ export const getUrl = async(req,res)=> {
         return res.redirect(302,cachedUrl)
        }
        const [result] = await db.query('SELECT long_url FROM shorturl where short_code=?', [id])
-       console.log(result)
+      
        if(result.length === 0){
         return  res.status(404).json({message: "URL NOT FOUND"});
        }
@@ -90,3 +90,4 @@ export const getUrl = async(req,res)=> {
 
     
 }
+
