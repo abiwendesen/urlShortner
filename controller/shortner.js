@@ -13,28 +13,31 @@ export const urlshort = async(req,res)=>{
     }
     const ip = req.ip; //to be removed
 
-
+try{
     const [result] = await db.query('INSERT INTO shorturl(long_url,ipAddress) VALUES(?,?)', [longUrl,ip]);
      
      const insertedId = result.insertId;
      const code= encode(insertedId);
      const shorturl = process.env.BASE_URL + code;
     
-     try{
+     
         await client.set(`short:${code}`,longUrl,{
             EX:CACHE_TLL
         });
-
-     }catch(err){
-        console.warn("Warining:" + err);
-     }
-
-    const[insert] = await db.query("UPDATE shorturl SET short_code=? WHERE id=?", [code,insertedId])
+     const[insert] = await db.query("UPDATE shorturl SET short_code=? WHERE id=?", [code,insertedId])
       
    if(insert){
-    return res.status(200).json({message: shorturl})
+    return res.status(201).json({message: shorturl})
    }
-}
+
+        
+     }catch(err){
+        console.warn("Warining:" + err);
+       
+     }
+    }
+
+   
 
 
 export const getUrl = async(req,res)=> {
