@@ -1,7 +1,7 @@
 import client from "../db/cache.js";
 import { StatusCodes } from "http-status-codes";
 
-const max_requests = 10;
+const max_requests = 5;
 const mx_window = 60;
 export async function rateLimiter(req,res,next){
     const key = `rate:${req.ip}`;
