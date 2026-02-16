@@ -6,7 +6,9 @@ dotenv.config()
     host:"localhost",
     user: process.env.USER,
     password: process.env.PASSWORD,
-    database: process.env.DBNAME
+    database: process.env.DBNAME,
+    connectionLimit:  process.env.CONNECTION_LIMIT,
+    queueLimit: 0
 });
 
 export  {db};
