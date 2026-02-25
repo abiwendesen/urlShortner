@@ -8,11 +8,7 @@ describe("Should check valid url",()=>{
     expect(response.body.message).toMatch('Invalid URL please use the correct format (eg. https://google.com)')
    });
 
-   // test("should return 201 valid url",async()=>{
-   //  const response = await request(app).post('/short').send(({url:"https://systemdesignschool.io/problems/url-shortener/solution"}));
-   //  expect(response.status).toBe(201)
-   //  expect(response.body.message).toMatch('http://localhost:5000/1y')
-   // });
+  
 
    test("Should redirect to given url and return 302",async()=>{
       const response = await request(app).get('/1q');
